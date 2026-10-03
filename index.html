@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#bde7f5">
 
-<title>Birthday Celebration 🎀</title>
+<meta name="theme-color" content="#b8e9f7">
+
+<title>AURORA — Happy Birthday 💙</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-}
-
-:root{
-    --blue:#bde7f5;
-    --blue-light:#e7faff;
-    --pink:#ff9fc8;
-    --pink-light:#ffd8ea;
-    --white:#ffffff;
-    --text:#315469;
 }
 
 html{
@@ -38,99 +35,226 @@ body{
     Arial,
     sans-serif;
 
-    color:var(--text);
+    color:#31586b;
 
     background:
     radial-gradient(
-        circle at 15% 20%,
-        rgba(255,255,255,.8),
+        circle at 15% 15%,
+        rgba(255,255,255,.9),
         transparent 25%
     ),
+
     radial-gradient(
-        circle at 85% 15%,
+        circle at 85% 20%,
         rgba(255,190,220,.35),
-        transparent 25%
+        transparent 28%
     ),
+
     linear-gradient(
         135deg,
-        #aee2f3,
-        #d9f5ff,
-        #b9e7f5
+        #a8e1f3,
+        #e9faff,
+        #b7e7f6
     );
 }
 
 
 /* =====================================================
-   LOCK SCREEN
+   VARIABLES
+===================================================== */
+
+:root{
+
+    --baby-blue:#b9e8f7;
+    --light-blue:#e8faff;
+
+    --blue:#52b9d8;
+    --deep-blue:#347d98;
+
+    --pink:#ff91bf;
+    --light-pink:#ffd8e8;
+
+    --white:#ffffff;
+
+    --glass:
+    rgba(255,255,255,.43);
+
+    --shadow:
+    0 20px 60px
+    rgba(55,130,155,.18);
+
+}
+
+
+/* =====================================================
+   WAITING SCREEN
 ===================================================== */
 
 #lockScreen{
 
     position:fixed;
+
     inset:0;
 
     z-index:99999;
 
     display:flex;
+
     flex-direction:column;
 
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
     padding:25px;
 
+    overflow:hidden;
+
     background:
+
     radial-gradient(
-        circle at 20% 20%,
-        rgba(255,255,255,.75),
+        circle at 20% 15%,
+        rgba(255,255,255,.9),
         transparent 25%
     ),
+
     radial-gradient(
-        circle at 80% 30%,
-        rgba(255,190,220,.4),
+        circle at 80% 25%,
+        rgba(255,185,220,.35),
         transparent 30%
     ),
+
     linear-gradient(
         135deg,
-        #a9e0f3,
-        #dff8ff,
-        #b7e5f4
+        #a5dff2,
+        #e9faff,
+        #b8e7f5
     );
 
     transition:
-    opacity 1.2s ease,
-    visibility 1.2s ease;
+
+    opacity 1.5s ease,
+
+    visibility 1.5s ease;
+
 }
+
 
 #lockScreen.hidden{
 
     opacity:0;
+
     visibility:hidden;
+
     pointer-events:none;
+
 }
 
 
-.lock-icon{
+/* =====================================================
+   WAITING STARS
+===================================================== */
 
-    font-size:70px;
+.wait-stars{
 
-    margin-bottom:20px;
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+
+.wait-star{
+
+    position:absolute;
+
+    color:white;
+
+    font-size:20px;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 25px #8fe3fa;
 
     animation:
-    lockFloat 3s ease-in-out infinite;
+    waitTwinkle
+    2s
+    ease-in-out
+    infinite;
 
 }
 
-@keyframes lockFloat{
+
+@keyframes waitTwinkle{
 
     0%,100%{
-        transform:translateY(0) rotate(-3deg);
+
+        opacity:.2;
+
+        transform:
+        scale(.6)
+        rotate(0);
+
     }
 
     50%{
-        transform:translateY(-12px) rotate(3deg);
+
+        opacity:1;
+
+        transform:
+        scale(1.5)
+        rotate(20deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   WAITING CONTENT
+===================================================== */
+
+.lock-icon{
+
+    font-size:75px;
+
+    margin-bottom:10px;
+
+    filter:
+    drop-shadow(
+        0 12px 20px
+        rgba(40,120,150,.2)
+    );
+
+    animation:
+    giftFloat
+    3s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes giftFloat{
+
+    0%,100%{
+
+        transform:
+        translateY(0)
+        rotate(-4deg);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-14px)
+        rotate(4deg);
+
     }
 
 }
@@ -141,47 +265,61 @@ body{
     color:white;
 
     font-size:
-    clamp(35px,7vw,65px);
+    clamp(40px,8vw,75px);
 
     text-shadow:
-    0 7px 25px rgba(50,120,150,.25);
+    0 8px 35px
+    rgba(45,120,150,.3);
 
-    margin-bottom:12px;
+}
+
+
+.future-title{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:.45em;
+
+    color:#ff79b7;
 
 }
 
 
 .lock-subtitle{
 
+    margin:
+    15px 0 25px;
+
+    line-height:1.9;
+
     font-size:18px;
-
-    color:#416b7d;
-
-    margin-bottom:30px;
 
 }
 
 
 .lock-date{
 
-    background:
-    rgba(255,255,255,.5);
+    padding:
+    12px 25px;
 
-    border:
-    1px solid rgba(255,255,255,.8);
-
-    backdrop-filter:blur(15px);
-
-    padding:12px 24px;
+    margin-bottom:25px;
 
     border-radius:50px;
 
-    margin-bottom:30px;
+    background:
+    rgba(255,255,255,.55);
 
-    color:#477285;
+    border:
+    1px solid
+    rgba(255,255,255,.8);
+
+    backdrop-filter:
+    blur(14px);
 
     box-shadow:
-    0 10px 35px rgba(60,130,150,.12);
+    var(--shadow);
 
 }
 
@@ -197,7 +335,7 @@ body{
     grid-template-columns:
     repeat(4,1fr);
 
-    gap:15px;
+    gap:14px;
 
     width:
     min(650px,100%);
@@ -216,12 +354,14 @@ body{
     rgba(255,255,255,.58);
 
     border:
-    1px solid rgba(255,255,255,.8);
+    1px solid
+    rgba(255,255,255,.8);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:
+    blur(14px);
 
     box-shadow:
-    0 15px 40px rgba(60,130,150,.15);
+    var(--shadow);
 
 }
 
@@ -233,7 +373,8 @@ body{
     font-size:
     clamp(30px,6vw,50px);
 
-    color:#39718a;
+    color:
+    var(--deep-blue);
 
 }
 
@@ -242,13 +383,207 @@ body{
 
     font-size:13px;
 
-    color:#668797;
+    color:#678998;
 
 }
 
 
 /* =====================================================
-   BACKGROUND
+   CINEMATIC OPENING
+===================================================== */
+
+#opening{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99990;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.3),
+        transparent 40%
+    ),
+
+    linear-gradient(
+        135deg,
+        #91d5eb,
+        #d8f5fc,
+        #a9dfef
+    );
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+}
+
+
+#opening.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+    animation:
+    openingFade
+    5.5s
+    forwards;
+
+}
+
+
+@keyframes openingFade{
+
+    0%{
+        opacity:1;
+    }
+
+    78%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+    }
+
+}
+
+
+.opening-small{
+
+    color:white;
+
+    font-size:18px;
+
+    letter-spacing:4px;
+
+    animation:
+    rise
+    1s
+    ease both;
+
+}
+
+
+.opening-title{
+
+    margin-top:15px;
+
+    color:white;
+
+    font-size:
+    clamp(50px,10vw,110px);
+
+    text-shadow:
+    0 12px 40px
+    rgba(40,110,140,.3);
+
+    animation:
+    titleReveal
+    1.8s
+    ease both;
+
+}
+
+
+.opening-title span{
+
+    color:#ff78b7;
+
+}
+
+
+.opening-doctor{
+
+    margin-top:20px;
+
+    color:white;
+
+    font-size:
+    clamp(22px,5vw,40px);
+
+    animation:
+    rise
+    1.5s
+    .5s
+    ease both;
+
+}
+
+
+@keyframes rise{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+@keyframes titleReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        scale(.7);
+
+        filter:
+        blur(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        scale(1);
+
+        filter:
+        blur(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   BACKGROUND CLOUDS
 ===================================================== */
 
 .background{
@@ -274,15 +609,16 @@ body{
 
     height:70px;
 
-    background:
-    rgba(255,255,255,.32);
-
     border-radius:100px;
 
-    filter:blur(2px);
+    background:
+    rgba(255,255,255,.3);
 
     animation:
-    cloudMove 22s linear infinite;
+    cloudMove
+    28s
+    linear
+    infinite;
 
 }
 
@@ -304,9 +640,11 @@ body{
 .cloud:before{
 
     width:100px;
+
     height:100px;
 
     left:35px;
+
     bottom:10px;
 
 }
@@ -315,9 +653,11 @@ body{
 .cloud:after{
 
     width:130px;
+
     height:130px;
 
     right:25px;
+
     bottom:5px;
 
 }
@@ -325,8 +665,9 @@ body{
 
 .cloud:nth-child(1){
 
-    top:12%;
-    left:-250px;
+    top:10%;
+
+    left:-300px;
 
 }
 
@@ -334,11 +675,13 @@ body{
 .cloud:nth-child(2){
 
     top:45%;
-    left:-300px;
 
-    transform:scale(.7);
+    left:-350px;
 
-    animation-duration:30s;
+    transform:
+    scale(.7);
+
+    animation-duration:35s;
 
 }
 
@@ -346,11 +689,13 @@ body{
 .cloud:nth-child(3){
 
     top:75%;
-    left:-250px;
 
-    transform:scale(.5);
+    left:-300px;
 
-    animation-duration:25s;
+    transform:
+    scale(.5);
+
+    animation-duration:30s;
 
 }
 
@@ -358,21 +703,26 @@ body{
 @keyframes cloudMove{
 
     from{
-        transform:translateX(-300px);
+
+        transform:
+        translateX(-350px);
+
     }
 
     to{
+
         transform:
         translateX(
-        calc(100vw + 500px)
+            calc(100vw + 500px)
         );
+
     }
 
 }
 
 
 /* =====================================================
-   MAIN
+   MAIN CONTAINER
 ===================================================== */
 
 .container{
@@ -422,27 +772,33 @@ body{
     rgba(255,255,255,.55);
 
     border:
-    1px solid rgba(255,255,255,.7);
+    1px solid
+    rgba(255,255,255,.75);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:
+    blur(10px);
 
-    margin-bottom:20px;
+    box-shadow:
+    0 10px 30px
+    rgba(50,120,150,.12);
 
 }
 
 
 h1{
 
+    margin-top:20px;
+
     font-size:
-    clamp(45px,8vw,90px);
+    clamp(48px,8vw,95px);
 
     line-height:1;
 
     color:white;
 
     text-shadow:
-    0 5px 0 rgba(90,160,185,.2),
-    0 15px 35px rgba(60,130,160,.25);
+    0 7px 30px
+    rgba(50,120,150,.25);
 
 }
 
@@ -451,22 +807,25 @@ h1{
 
     display:block;
 
-    margin-top:18px;
+    margin-top:15px;
 
-    color:#ff79b8;
+    color:#ff76b6;
+
+    letter-spacing:5px;
 
 }
 
 
 .subtitle{
 
-    max-width:650px;
+    max-width:700px;
 
-    margin:25px auto;
+    margin:
+    25px auto;
 
-    font-size:18px;
+    font-size:19px;
 
-    line-height:1.9;
+    line-height:2;
 
 }
 
@@ -477,19 +836,17 @@ h1{
 
 .cake-area{
 
-    margin-top:50px;
+    width:340px;
 
-    position:relative;
-
-    width:330px;
-
-    height:270px;
+    height:280px;
 
     display:flex;
 
     justify-content:center;
 
     align-items:flex-end;
+
+    margin-top:25px;
 
 }
 
@@ -500,33 +857,13 @@ h1{
 
     width:260px;
 
-    height:145px;
+    height:155px;
 
-}
-
-
-.cake-top{
-
-    position:absolute;
-
-    width:260px;
-
-    height:60px;
-
-    top:20px;
-
-    background:
-    linear-gradient(
-    #fff,
-    #ffe6f1
+    filter:
+    drop-shadow(
+        0 20px 25px
+        rgba(50,120,150,.18)
     );
-
-    border-radius:50%;
-
-    border:
-    4px solid #ffb4d2;
-
-    z-index:3;
 
 }
 
@@ -535,31 +872,51 @@ h1{
 
     position:absolute;
 
-    width:245px;
+    left:8px;
 
-    height:110px;
+    top:50px;
 
-    top:45px;
+    width:244px;
 
-    left:7px;
-
-    background:
-    linear-gradient(
-    90deg,
-    #ffc8df,
-    #fff0f7,
-    #ffc8df
-    );
+    height:105px;
 
     border-radius:
     15px 15px 30px 30px;
 
-    box-shadow:
-    inset 0 -15px 0
-    rgba(255,145,190,.15),
+    background:
+    linear-gradient(
+        90deg,
+        #ffc2dd,
+        #fff0f7,
+        #ffc2dd
+    );
 
-    0 20px 30px
-    rgba(90,130,150,.15);
+}
+
+
+.cake-top{
+
+    position:absolute;
+
+    top:25px;
+
+    width:260px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        #fff,
+        #ffe5f1
+    );
+
+    border:
+    4px solid
+    #ffafd0;
+
+    z-index:3;
 
 }
 
@@ -568,17 +925,17 @@ h1{
 
     position:absolute;
 
+    top:63px;
+
     width:260px;
 
-    height:25px;
+    height:27px;
 
-    top:60px;
-
-    z-index:5;
+    border-radius:50%;
 
     background:white;
 
-    border-radius:50%;
+    z-index:5;
 
 }
 
@@ -587,26 +944,26 @@ h1{
 
     position:absolute;
 
+    left:123px;
+
+    top:-38px;
+
     width:15px;
 
     height:70px;
 
-    top:-45px;
-
-    background:
-    repeating-linear-gradient(
-    -45deg,
-    #fff,
-    #fff 7px,
-    #ff9fc7 7px,
-    #ff9fc7 14px
-    );
+    z-index:8;
 
     border-radius:8px;
 
-    left:122px;
-
-    z-index:8;
+    background:
+    repeating-linear-gradient(
+        -45deg,
+        #fff 0,
+        #fff 7px,
+        #ff9fc7 7px,
+        #ff9fc7 14px
+    );
 
 }
 
@@ -615,29 +972,40 @@ h1{
 
     position:absolute;
 
-    width:24px;
+    width:25px;
 
     height:35px;
 
-    top:-35px;
+    left:-5px;
 
-    left:-4px;
+    top:-35px;
 
     background:
     radial-gradient(
-    circle at 50% 70%,
-    #fff 10%,
-    #ffe36e 35%,
-    #ff9d4d 70%
+        circle at 50% 70%,
+        #fff 8%,
+        #ffe36b 35%,
+        #ff9745 70%
     );
 
     border-radius:
     50% 50% 50% 0;
 
-    transform:rotate(-45deg);
+    transform:
+    rotate(-45deg);
+
+    filter:
+    drop-shadow(
+        0 0 12px
+        #ffd34d
+    );
 
     animation:
-    flame .7s ease-in-out infinite alternate;
+    flame
+    .65s
+    ease-in-out
+    infinite
+    alternate;
 
 }
 
@@ -645,9 +1013,11 @@ h1{
 @keyframes flame{
 
     to{
+
         transform:
-        rotate(-42deg)
-        scale(1.1);
+        rotate(-40deg)
+        scale(1.12);
+
     }
 
 }
@@ -659,7 +1029,7 @@ h1{
 
 .start-btn{
 
-    border:none;
+    border:0;
 
     cursor:pointer;
 
@@ -676,14 +1046,14 @@ h1{
 
     background:
     linear-gradient(
-    135deg,
-    #ff91c3,
-    #ffb9d9
+        135deg,
+        #ff8fbe,
+        #ffbadb
     );
 
     box-shadow:
-    0 12px 30px
-    rgba(255,120,180,.3);
+    0 14px 35px
+    rgba(255,110,175,.28);
 
     transition:.25s;
 
@@ -694,35 +1064,41 @@ h1{
 
     transform:
     translateY(-4px)
-    scale(1.03);
+    scale(1.04);
 
 }
 
 
 /* =====================================================
-   SECTIONS
+   GLASS SECTIONS
 ===================================================== */
 
 .section{
 
-    margin:80px 0;
+    position:relative;
+
+    overflow:hidden;
+
+    margin:
+    75px 0;
 
     padding:
-    45px 30px;
+    50px 30px;
 
     border-radius:35px;
 
     background:
-    rgba(255,255,255,.38);
+    rgba(255,255,255,.4);
 
     border:
-    1px solid rgba(255,255,255,.65);
+    1px solid
+    rgba(255,255,255,.7);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:
+    blur(14px);
 
     box-shadow:
-    0 20px 60px
-    rgba(65,125,150,.20);
+    var(--shadow);
 
 }
 
@@ -733,24 +1109,459 @@ h1{
 
     font-size:32px;
 
-    color:#39718a;
+    color:
+    var(--deep-blue);
 
     margin-bottom:30px;
 
 }
 
 
-.message{
+/* =====================================================
+   MESSAGE CARD
+===================================================== */
 
-    max-width:750px;
+.message-section{
 
-    margin:auto;
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.66),
+        rgba(188,235,247,.45)
+    );
+
+}
+
+
+.message-glow{
+
+    position:absolute;
+
+    width:230px;
+
+    height:230px;
+
+    border-radius:50%;
+
+    background:
+    rgba(110,215,240,.15);
+
+    filter:blur(35px);
+
+    top:-100px;
+
+    right:-80px;
+
+    animation:
+    glowPulse
+    6s
+    ease-in-out
+    infinite;
+
+}
+
+
+.message-glow-two{
+
+    position:absolute;
+
+    width:200px;
+
+    height:200px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,160,210,.12);
+
+    filter:blur(35px);
+
+    bottom:-100px;
+
+    left:-80px;
+
+    animation:
+    glowPulse
+    7s
+    ease-in-out
+    infinite
+    reverse;
+
+}
+
+
+@keyframes glowPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.4);
+    }
+
+}
+
+
+.message-icon{
+
+    position:relative;
+
+    z-index:2;
 
     text-align:center;
 
+    font-size:70px;
+
+    margin-bottom:10px;
+
+    animation:
+    iconFloat
+    3s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes iconFloat{
+
+    0%,100%{
+        transform:
+        translateY(0)
+        rotate(-4deg);
+    }
+
+    50%{
+        transform:
+        translateY(-10px)
+        rotate(4deg);
+    }
+
+}
+
+
+/* =====================================================
+   SHIMMER TITLE
+===================================================== */
+
+.shimmer-title{
+
+    position:relative;
+
+    display:inline-block;
+
+    color:
+    #397d98;
+
+}
+
+
+.shimmer-title::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    transform:
+    skewX(-20deg);
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.95),
+        transparent
+    );
+
+    animation:
+    titleShimmer
+    3.5s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes titleShimmer{
+
+    0%{
+        left:-120%;
+    }
+
+    55%,100%{
+        left:140%;
+    }
+
+}
+
+
+/* =====================================================
+   MESSAGE TEXT
+===================================================== */
+
+.message{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+
+    margin:auto;
+
+    text-align:right;
+
     font-size:19px;
 
+    line-height:2.35;
+
+}
+
+
+.message p{
+
+    margin-bottom:25px;
+
+}
+
+
+.message-line{
+
+    opacity:0;
+
+    transform:
+    translateY(20px);
+
+    animation:
+    messageReveal
+    1s
+    ease
+    forwards;
+
+}
+
+
+.message-line:nth-child(1){
+    animation-delay:.2s;
+}
+
+.message-line:nth-child(2){
+    animation-delay:.7s;
+}
+
+.message-line:nth-child(3){
+    animation-delay:1.2s;
+}
+
+.message-line:nth-child(4){
+    animation-delay:1.7s;
+}
+
+.message-line:nth-child(5){
+    animation-delay:2.2s;
+}
+
+.message-line:nth-child(6){
+    animation-delay:2.7s;
+}
+
+.message-line:nth-child(7){
+    animation-delay:3.2s;
+}
+
+
+@keyframes messageReveal{
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   SPARKLING WORDS
+===================================================== */
+
+.sparkle-word{
+
+    position:relative;
+
+    display:inline-block;
+
+    font-weight:700;
+
+    color:
+    #3185a3;
+
+    text-shadow:
+    0 0 8px
+    rgba(90,210,240,.25);
+
+}
+
+
+.sparkle-word::after{
+
+    content:"✦";
+
+    position:absolute;
+
+    top:-12px;
+
+    right:-15px;
+
+    font-size:12px;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px
+    #66d5f5;
+
+    animation:
+    sparkleWord
+    1.5s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes sparkleWord{
+
+    0%,100%{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+}
+
+
+/* =====================================================
+   DOCTOR SECTION
+===================================================== */
+
+.doctor-section{
+
+    text-align:center;
+
+}
+
+
+.doctor-icon{
+
+    font-size:70px;
+
+    animation:
+    doctorFloat
+    3s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes doctorFloat{
+
+    0%,100%{
+        transform:
+        translateY(0)
+        rotate(-4deg);
+    }
+
+    50%{
+        transform:
+        translateY(-10px)
+        rotate(4deg);
+    }
+
+}
+
+
+.doctor-text{
+
+    max-width:700px;
+
+    margin:
+    20px auto;
+
     line-height:2;
+
+    font-size:18px;
+
+}
+
+
+.medical-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:35px;
+
+}
+
+
+.medical-card{
+
+    min-height:120px;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,.52);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    transition:.3s;
+
+}
+
+
+.medical-card:hover{
+
+    transform:
+    translateY(-8px);
+
+}
+
+
+.medical-card span{
+
+    font-size:42px;
 
 }
 
@@ -766,7 +1577,7 @@ h1{
     grid-template-columns:
     repeat(4,1fr);
 
-    gap:20px;
+    gap:18px;
 
 }
 
@@ -782,11 +1593,11 @@ h1{
 
     display:flex;
 
-    flex-direction:column;
-
     justify-content:center;
 
     align-items:center;
+
+    flex-direction:column;
 
     transition:.3s;
 
@@ -819,7 +1630,8 @@ h1{
 
     text-align:center;
 
-    padding:80px 20px;
+    padding:
+    100px 20px;
 
 }
 
@@ -827,9 +1639,13 @@ h1{
 .final h2{
 
     font-size:
-    clamp(35px,6vw,60px);
+    clamp(38px,7vw,70px);
 
     color:white;
+
+    text-shadow:
+    0 10px 35px
+    rgba(50,120,150,.25);
 
 }
 
@@ -838,40 +1654,56 @@ h1{
 
     margin-top:20px;
 
-    font-size:18px;
+    font-size:19px;
+
+    line-height:2;
 
 }
 
 
 /* =====================================================
-   FLOATING
+   BLUE HEARTS
 ===================================================== */
 
-.floating{
+.blue-heart{
 
     position:fixed;
 
-    bottom:-80px;
+    bottom:-60px;
 
-    z-index:10;
+    z-index:15;
 
     pointer-events:none;
 
+    color:#58c8e8;
+
+    text-shadow:
+
+    0 0 10px
+    rgba(80,210,245,.7),
+
+    0 0 25px
+    rgba(80,210,245,.4);
+
     animation:
-    floatUp linear forwards;
+    heartFloat
+    linear
+    forwards;
 
 }
 
 
-@keyframes floatUp{
+@keyframes heartFloat{
 
     0%{
 
+        opacity:0;
+
         transform:
         translateY(0)
-        rotate(0deg);
-
-        opacity:0;
+        translateX(0)
+        scale(.5)
+        rotate(-10deg);
 
     }
 
@@ -879,17 +1711,127 @@ h1{
         opacity:1;
     }
 
-    90%{
-        opacity:1;
+    50%{
+
+        transform:
+        translateY(-55vh)
+        translateX(40px)
+        scale(1.1)
+        rotate(12deg);
+
     }
 
     100%{
+
+        opacity:0;
+
+        transform:
+        translateY(-120vh)
+        translateX(-35px)
+        scale(.8)
+        rotate(-20deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   MEDICAL FLOATERS
+===================================================== */
+
+.medical-float{
+
+    position:fixed;
+
+    bottom:-60px;
+
+    z-index:14;
+
+    pointer-events:none;
+
+    animation:
+    medicalFloat
+    linear
+    forwards;
+
+}
+
+
+@keyframes medicalFloat{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+        translateY(0)
+        rotate(0);
+
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+
+        opacity:0;
 
         transform:
         translateY(-120vh)
         rotate(360deg);
 
+    }
+
+}
+
+
+/* =====================================================
+   FLOWERS & STARS
+===================================================== */
+
+.rose-float{
+
+    position:fixed;
+
+    bottom:-50px;
+
+    z-index:13;
+
+    pointer-events:none;
+
+    animation:
+    roseFloat
+    linear
+    forwards;
+
+}
+
+
+@keyframes roseFloat{
+
+    from{
+
         opacity:0;
+
+        transform:
+        translateY(0)
+        rotate(0);
+
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateY(-115vh)
+        rotate(500deg);
 
     }
 
@@ -904,18 +1846,20 @@ h1{
 
     position:fixed;
 
+    top:-20px;
+
     width:9px;
 
     height:14px;
 
-    top:-20px;
-
-    z-index:10000;
+    z-index:100000;
 
     pointer-events:none;
 
     animation:
-    confettiFall linear forwards;
+    confettiFall
+    linear
+    forwards;
 
 }
 
@@ -929,6 +1873,21 @@ h1{
         rotate(720deg);
 
     }
+
+}
+
+
+/* =====================================================
+   CLICK SPARKLES
+===================================================== */
+
+.click-spark{
+
+    position:fixed;
+
+    z-index:100001;
+
+    pointer-events:none;
 
 }
 
@@ -953,9 +1912,41 @@ h1{
 
     }
 
+    .medical-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .section{
+
+        padding:
+        35px 18px;
+
+    }
+
+    .message{
+
+        font-size:17px;
+
+        line-height:2.2;
+
+        text-align:right;
+
+    }
+
     .cake-area{
 
-        transform:scale(.85);
+        transform:
+        scale(.86);
+
+    }
+
+    .opening-title{
+
+        font-size:
+        clamp(45px,13vw,80px);
 
     }
 
@@ -968,15 +1959,21 @@ h1{
     *::before,
     *::after{
 
-        animation-duration:.01ms !important;
+        animation-duration:
+        .01ms !important;
 
-        animation-iteration-count:1 !important;
+        animation-iteration-count:
+        1 !important;
+
+        scroll-behavior:
+        auto !important;
 
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -989,20 +1986,78 @@ h1{
 
 <div id="lockScreen">
 
+    <div class="wait-stars">
+
+        <span
+        class="wait-star"
+        style="top:12%;left:15%">
+        ✦
+        </span>
+
+        <span
+        class="wait-star"
+        style="top:20%;left:80%">
+        ✧
+        </span>
+
+        <span
+        class="wait-star"
+        style="top:40%;left:8%">
+        ✦
+        </span>
+
+        <span
+        class="wait-star"
+        style="top:55%;left:90%">
+        ✧
+        </span>
+
+        <span
+        class="wait-star"
+        style="top:75%;left:20%">
+        ✦
+        </span>
+
+        <span
+        class="wait-star"
+        style="top:80%;left:75%">
+        ✧
+        </span>
+
+    </div>
+
+
     <div class="lock-icon">
         🎁
     </div>
 
+
     <h1 class="lock-title">
+
         Something Special
+
+        <span class="future-title">
+            🩺 FUTURE DOCTOR 🩺
+        </span>
+
     </h1>
 
+
     <p class="lock-subtitle">
+
         المفاجأة لم يحن وقتها بعد... 🎀
+
+        <br>
+
+        انتظري حتى بداية يومك المميز 💙
+
     </p>
 
+
     <div class="lock-date">
+
         🎂 2 نوفمبر — الساعة 12:00 صباحًا
+
     </div>
 
 
@@ -1065,30 +2120,69 @@ h1{
 
 
 <!-- =====================================================
+     CINEMATIC OPENING
+===================================================== -->
+
+<div id="opening">
+
+    <div class="opening-small">
+
+        ✨ A SPECIAL MOMENT ✨
+
+    </div>
+
+
+    <div class="opening-title">
+
+        Happy
+
+        <span>
+            Birthday
+        </span>
+
+    </div>
+
+
+    <div class="opening-doctor">
+
+        🩺 AURORA — FUTURE DOCTOR 👩🏻‍⚕️
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      BACKGROUND
 ===================================================== -->
 
 <div class="background">
 
     <div class="cloud"></div>
+
     <div class="cloud"></div>
+
     <div class="cloud"></div>
 
 </div>
 
 
 <!-- =====================================================
-     MAIN WEBSITE
+     MAIN
 ===================================================== -->
 
-<main class="container" id="mainContent">
+<main class="container">
 
+
+<!-- HERO -->
 
 <section class="hero">
 
 
     <div class="badge">
-        🎀 A Special Day 🎀
+
+        🎀 A VERY SPECIAL DAY 🎀
+
     </div>
 
 
@@ -1099,7 +2193,9 @@ h1{
         <span
         class="name"
         id="personName">
-            Aurora
+
+            AURORA
+
         </span>
 
     </h1>
@@ -1110,7 +2206,7 @@ h1{
         اليوم ليس مجرد يوم عادي...
 
         إنه اليوم الذي أصبح فيه العالم
-        أجمل بوجودكِ ✨
+        أجمل بوجودكِ ✨💙
 
     </p>
 
@@ -1150,38 +2246,243 @@ h1{
 </section>
 
 
+<!-- =====================================================
+     PERSONAL MESSAGE
+===================================================== -->
 
-<section class="section">
+<section class="section message-section">
+
+
+    <div class="message-glow"></div>
+
+    <div class="message-glow-two"></div>
+
+
+    <div class="message-icon">
+
+        💙
+
+    </div>
 
 
     <h2 class="section-title">
 
-        💌 رسالة خاصة
+        <span class="shimmer-title">
+
+            💌 إلى AURORA
+
+        </span>
 
     </h2>
 
 
-    <p class="message">
+    <div class="message">
 
-        في يوم ميلادكِ أتمنى أن تكون أيامك القادمة
-        مليئة بالضحكات الجميلة واللحظات التي تستحق
-        أن تتذكريها دائماً.
 
-        <br><br>
+        <p class="message-line">
 
-        أتمنى أن تحققي كل أمنياتكِ،
-        وأن يبقى قلبكِ دائماً مليئاً بالسعادة.
+            <span class="sparkle-word">
+                ليدي تبيان الفاتح
+            </span>
 
-        <br><br>
+            البنت الما كنت متوقع انو يكون عندي معاها
+            صلة نهائي، لا وكمان بقت أقرب زول لي،
+            وزيادة على كدا بقت الملجأ تبعي.
 
-        🎀 كل عام وأنتِ بخير 🎀
+        </p>
 
-    </p>
 
+        <p class="message-line">
+
+            بحكي ليها الحاصل علي حتى أصغر تفاصيل يومي،
+            ووقفت معاي في الحلوة والمرة،
+            وبعتبرها سبب في نجاحي وتقدمي. 💙
+
+        </p>
+
+
+        <p class="message-line">
+
+            لا أعرف كيف أبدأ، لكني أعرف أن قلبي مليء بكِ.
+            أنتِ من الأشخاص القلائل الذين إذا دخلوا حياتي
+            صار كل شيء أخف وأجمل.
+
+        </p>
+
+
+        <p class="message-line">
+
+            شكرًا لأنكِ كنتِ هناك في الأيام التي لم أقل فيها
+            شيئًا لكنكِ فهمتِ كل شيء.
+            شكرًا لضحكتكِ التي تنقذني من يوم ثقيل،
+            ولكلمتكِ الصادقة حين أحتاجها حتى لو لم تكن
+            ما أريد سماعه.
+
+        </p>
+
+
+        <p class="message-line">
+
+            أنتِ لستِ مجرد صديقة،
+            أنتِ بيتٌ أرجع إليه حين تتعب الدنيا. 🩵
+
+        </p>
+
+
+        <p class="message-line">
+
+            أتمنى أن تعرفي كم أقدّركِ،
+            وكم أنا ممتن لأن الحياة جمعتنا.
+            مهما تباعدت بنا الأيام والمسافات،
+            ستبقين في قلبي في مكانٍ لا يشغله أحد غيركِ.
+
+        </p>
+
+
+        <p class="message-line">
+
+            أحبكِ كثيرًا،
+            وسأبقى بجانبكِ كما بقيتِ بجانبي. 💙
+
+        </p>
+
+
+        <p class="message-line">
+
+            كل عام وكل سنة وكل ساعة ودقيقة وثانية
+            وانتي بألف خيير وعافية،
+            وإن شاء الله كدا عقبال ملايييييين الشمعات يارب. 🎂✨
+
+        </p>
+
+
+        <p class="message-line">
+
+            عارف في نفسك حاجات كتيرة،
+            فشنو بقول ليكي:
+            ربنا يحقق الفي نفسك ومرادك،
+            ويجعل الابتسامة مرسومة دايمًا في وجهك،
+            وتكوني دايمًا سبب في سعادة الآخرين،
+            وبالذات ماما وبابا.
+
+        </p>
+
+
+        <p class="message-line">
+
+            وتكوني خير قدوة لجواد وكريم،
+            وربنا يحفظكم كلكم كدا يارب. 🤍
+
+        </p>
+
+
+        <p class="message-line">
+
+            ما معروف لمن تشوفي الرسالة دي أكون موجود ولا لا،
+            لكن إن شاء الله يكون تواصلنا موجود وأقوى،
+            وبتمنى من جواي إنو ربنا يديم الخوة
+            والعلاقة اللي اتبنت بينا دي. 💙
+
+        </p>
+
+
+    </div>
 
 </section>
 
 
+<!-- =====================================================
+     FUTURE DOCTOR
+===================================================== -->
+
+<section class="section doctor-section">
+
+
+    <div class="doctor-icon">
+
+        🩺
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        ✨ AURORA — FUTURE DOCTOR ✨
+
+    </h2>
+
+
+    <p class="doctor-text">
+
+        ومن بين كل الأحلام الجميلة التي تحملينها،
+        أتمنى أن يأتي اليوم الذي أراكِ فيه
+        بالمعطف الأبيض،
+        وأنتِ تقولين:
+
+        <br><br>
+
+        <strong>
+            "أخيرًا... وصلت للحلم." 🩺
+        </strong>
+
+    </p>
+
+
+    <div class="medical-grid">
+
+
+        <div class="medical-card">
+
+            <span>
+                🩺
+            </span>
+
+            الحلم
+
+        </div>
+
+
+        <div class="medical-card">
+
+            <span>
+                📚
+            </span>
+
+            الاجتهاد
+
+        </div>
+
+
+        <div class="medical-card">
+
+            <span>
+                💙
+            </span>
+
+            الإصرار
+
+        </div>
+
+
+        <div class="medical-card">
+
+            <span>
+                👩🏻‍⚕️
+            </span>
+
+            المستقبل
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SWEETS
+===================================================== -->
 
 <section class="section">
 
@@ -1253,16 +2554,41 @@ h1{
 </section>
 
 
+<!-- =====================================================
+     FINAL
+===================================================== -->
 
 <section class="final">
 
+
     <h2>
-        🎀 Keep Smiling 🎀
+
+        🎀 Keep Dreaming 🎀
+
     </h2>
 
+
     <p>
-        لأن ابتسامتكِ أجمل جزء في هذه الحكاية 💙
+
+        الحلم يبدأ بأمنية...
+
+        <br>
+
+        ثم يصبح هدفًا...
+
+        <br>
+
+        وفي يوم من الأيام يصبح حقيقة. 💙
+
     </p>
+
+
+    <p>
+
+        🩺 AURORA — FUTURE DOCTOR 👩🏻‍⚕️
+
+    </p>
+
 
 </section>
 
@@ -1270,27 +2596,23 @@ h1{
 </main>
 
 
-
 <script>
 
 /* =====================================================
-   SETTINGS
+   CONFIG
 ===================================================== */
 
 const CONFIG = {
 
-    name: "Aurora",
+    name: "AURORA",
 
     /*
-       تاريخ فتح الموقع:
+       يفتح الموقع في:
 
-       2 نوفمبر الساعة 12:00 صباحًا
+       2 نوفمبر 2026
+       الساعة 12:00 صباحًا
 
-       السنة الحالية في المثال:
-       2026
-
-       إذا كان عيد الميلاد في سنة أخرى،
-       غيّر الرقم فقط.
+       حسب توقيت جهاز الزائر.
     */
 
     birthday:
@@ -1300,46 +2622,42 @@ const CONFIG = {
 
 
 /* =====================================================
-   NAME
+   SET NAME
 ===================================================== */
 
-document.getElementById("personName")
-.textContent = CONFIG.name;
+document.getElementById(
+    "personName"
+).textContent =
+CONFIG.name;
 
 
 /* =====================================================
-   TARGET DATE
+   TARGET
 ===================================================== */
 
 const target =
-new Date(CONFIG.birthday).getTime();
+new Date(
+    CONFIG.birthday
+).getTime();
+
+
+let websiteOpened =
+false;
 
 
 /* =====================================================
    COUNTDOWN
 ===================================================== */
 
-let websiteOpened = false;
-
-
 function updateCountdown(){
 
     const now =
-    new Date().getTime();
+    Date.now();
 
 
     const difference =
     target - now;
 
-
-    /*
-       عندما يصل الوقت إلى:
-
-       2 نوفمبر
-       00:00:00
-
-       يتم فتح الموقع.
-    */
 
     if(difference <= 0){
 
@@ -1353,21 +2671,21 @@ function updateCountdown(){
     const days =
     Math.floor(
         difference /
-        (1000 * 60 * 60 * 24)
+        (1000*60*60*24)
     );
 
 
     const hours =
     Math.floor(
         (difference /
-        (1000 * 60 * 60)) % 24
+        (1000*60*60)) % 24
     );
 
 
     const minutes =
     Math.floor(
         (difference /
-        (1000 * 60)) % 60
+        (1000*60)) % 60
     );
 
 
@@ -1378,26 +2696,42 @@ function updateCountdown(){
     );
 
 
-    document.getElementById("days")
-    .textContent =
-    String(days).padStart(2,"0");
+    document.getElementById(
+        "days"
+    ).textContent =
+    String(days)
+    .padStart(2,"0");
 
 
-    document.getElementById("hours")
-    .textContent =
-    String(hours).padStart(2,"0");
+    document.getElementById(
+        "hours"
+    ).textContent =
+    String(hours)
+    .padStart(2,"0");
 
 
-    document.getElementById("minutes")
-    .textContent =
-    String(minutes).padStart(2,"0");
+    document.getElementById(
+        "minutes"
+    ).textContent =
+    String(minutes)
+    .padStart(2,"0");
 
 
-    document.getElementById("seconds")
-    .textContent =
-    String(seconds).padStart(2,"0");
+    document.getElementById(
+        "seconds"
+    ).textContent =
+    String(seconds)
+    .padStart(2,"0");
 
 }
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
 
 
 /* =====================================================
@@ -1410,94 +2744,265 @@ function openWebsite(){
         return;
 
 
-    websiteOpened = true;
+    websiteOpened =
+    true;
+
+
+    const opening =
+    document.getElementById(
+        "opening"
+    );
 
 
     const lock =
-    document.getElementById("lockScreen");
+    document.getElementById(
+        "lockScreen"
+    );
 
 
     /*
-       تشغيل الاحتفال أولاً
+       الاحتفال الكبير
     */
 
     massiveCelebration();
 
 
     /*
-       فتح الموقع بعد بداية المؤثرات
+       المشهد السينمائي
+    */
+
+    opening.classList.add(
+        "show"
+    );
+
+
+    /*
+       إخفاء العد
     */
 
     setTimeout(()=>{
 
-        lock.classList.add("hidden");
+        lock.classList.add(
+            "hidden"
+        );
 
-        document.body.style.overflowX =
-        "hidden";
+    },300);
 
-    },1200);
+
+    /*
+       تشغيل المؤثرات المستمرة
+    */
+
+    setTimeout(()=>{
+
+        startEffects();
+
+    },2500);
 
 }
 
 
 /* =====================================================
-   FLOATING ITEMS
+   BLUE HEARTS
 ===================================================== */
 
-const floatingItems = [
+const blueHearts = [
 
-    "🎈",
     "💙",
-    "🎀",
-    "✨",
-    "🦋",
-    "💎",
-    "🌸",
-    "⭐",
-    "💕"
+    "🩵",
+    "💙",
+    "♡",
+    "🩵",
+    "💙"
 
 ];
 
 
-function createFloating(){
+function createBlueHeart(){
+
+    const heart =
+    document.createElement(
+        "div"
+    );
+
+
+    heart.className =
+    "blue-heart";
+
+
+    heart.textContent =
+    blueHearts[
+        Math.floor(
+            Math.random() *
+            blueHearts.length
+        )
+    ];
+
+
+    heart.style.left =
+    Math.random()*100 +
+    "vw";
+
+
+    heart.style.fontSize =
+    (18 +
+    Math.random()*32) +
+    "px";
+
+
+    heart.style.animationDuration =
+    (7 +
+    Math.random()*7) +
+    "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },15000);
+
+}
+
+
+/* =====================================================
+   MEDICAL EFFECTS
+===================================================== */
+
+const medicalItems = [
+
+    "🩺",
+    "💊",
+    "✚",
+    "🩵",
+    "✨",
+    "👩🏻‍⚕️",
+    "🔬"
+
+];
+
+
+function createMedicalEffect(){
 
     const item =
-    document.createElement("div");
+    document.createElement(
+        "div"
+    );
 
 
     item.className =
-    "floating";
+    "medical-float";
 
 
     item.textContent =
-    floatingItems[
+    medicalItems[
         Math.floor(
             Math.random() *
-            floatingItems.length
+            medicalItems.length
         )
     ];
 
 
     item.style.left =
-    Math.random()*100 + "vw";
+    Math.random()*100 +
+    "vw";
 
 
     item.style.fontSize =
-    (18 + Math.random()*25) + "px";
+    (20 +
+    Math.random()*24) +
+    "px";
 
 
     item.style.animationDuration =
-    (7 + Math.random()*7) + "s";
+    (8 +
+    Math.random()*7) +
+    "s";
 
 
-    document.body.appendChild(item);
+    document.body.appendChild(
+        item
+    );
 
 
     setTimeout(()=>{
 
         item.remove();
 
-    },15000);
+    },16000);
+
+}
+
+
+/* =====================================================
+   FLOWERS / STARS
+===================================================== */
+
+const roseItems = [
+
+    "🌸",
+    "🌷",
+    "🌹",
+    "✨",
+    "⭐",
+    "🦋"
+
+];
+
+
+function createRose(){
+
+    const item =
+    document.createElement(
+        "div"
+    );
+
+
+    item.className =
+    "rose-float";
+
+
+    item.textContent =
+    roseItems[
+        Math.floor(
+            Math.random() *
+            roseItems.length
+        )
+    ];
+
+
+    item.style.left =
+    Math.random()*100 +
+    "vw";
+
+
+    item.style.fontSize =
+    (18 +
+    Math.random()*25) +
+    "px";
+
+
+    item.style.animationDuration =
+    (8 +
+    Math.random()*7) +
+    "s";
+
+
+    document.body.appendChild(
+        item
+    );
+
+
+    setTimeout(()=>{
+
+        item.remove();
+
+    },16000);
 
 }
 
@@ -1508,11 +3013,13 @@ function createFloating(){
 
 function createConfetti(){
 
-    const confetti =
-    document.createElement("div");
+    const item =
+    document.createElement(
+        "div"
+    );
 
 
-    confetti.className =
+    item.className =
     "confetti";
 
 
@@ -1520,35 +3027,41 @@ function createConfetti(){
 
         "#ff9fc8",
         "#ffffff",
-        "#8fd8ef",
+        "#76cee9",
         "#ffd86b",
-        "#b7a1ff"
+        "#a99cff"
 
     ];
 
 
-    confetti.style.background =
+    item.style.background =
     colors[
         Math.floor(
-            Math.random()*colors.length
+            Math.random() *
+            colors.length
         )
     ];
 
 
-    confetti.style.left =
-    Math.random()*100 + "vw";
+    item.style.left =
+    Math.random()*100 +
+    "vw";
 
 
-    confetti.style.animationDuration =
-    (2.5 + Math.random()*3) + "s";
+    item.style.animationDuration =
+    (2.5 +
+    Math.random()*3) +
+    "s";
 
 
-    document.body.appendChild(confetti);
+    document.body.appendChild(
+        item
+    );
 
 
     setTimeout(()=>{
 
-        confetti.remove();
+        item.remove();
 
     },6000);
 
@@ -1556,39 +3069,123 @@ function createConfetti(){
 
 
 /* =====================================================
-   MASSIVE CELEBRATION
+   BIG CELEBRATION
 ===================================================== */
 
 function massiveCelebration(){
 
     /*
-       كونفيتي قوي عند فتح الموقع
+       كونفيتي
     */
 
-    for(let i=0;i<180;i++){
+    for(
+        let i=0;
+        i<220;
+        i++
+    ){
 
         setTimeout(()=>{
 
             createConfetti();
 
-        },i*12);
+        },i*10);
 
     }
 
 
     /*
-       بالونات وقلوب ونجوم
+       قلوب
     */
 
-    for(let i=0;i<40;i++){
+    for(
+        let i=0;
+        i<70;
+        i++
+    ){
 
         setTimeout(()=>{
 
-            createFloating();
+            createBlueHeart();
+
+        },i*40);
+
+    }
+
+
+    /*
+       رموز طبية
+    */
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+        setTimeout(()=>{
+
+            createMedicalEffect();
+
+        },i*80);
+
+    }
+
+
+    /*
+       ورود ونجوم
+    */
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        setTimeout(()=>{
+
+            createRose();
 
         },i*70);
 
     }
+
+}
+
+
+/* =====================================================
+   CONTINUOUS EFFECTS
+===================================================== */
+
+let effectsStarted =
+false;
+
+
+function startEffects(){
+
+    if(effectsStarted)
+        return;
+
+
+    effectsStarted =
+    true;
+
+
+    setInterval(
+        createBlueHeart,
+        500
+    );
+
+
+    setInterval(
+        createMedicalEffect,
+        1600
+    );
+
+
+    setInterval(
+        createRose,
+        1800
+    );
 
 }
 
@@ -1599,34 +3196,59 @@ function massiveCelebration(){
 
 function celebrate(){
 
-    for(let i=0;i<120;i++){
+    for(
+        let i=0;
+        i<160;
+        i++
+    ){
 
         setTimeout(()=>{
 
             createConfetti();
 
-        },i*12);
+        },i*10);
 
     }
 
 
-    for(let i=0;i<35;i++){
+    for(
+        let i=0;
+        i<60;
+        i++
+    ){
 
         setTimeout(()=>{
 
-            createFloating();
+            createBlueHeart();
 
-        },i*50);
+        },i*40);
+
+    }
+
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+        setTimeout(()=>{
+
+            createRose();
+
+        },i*60);
 
     }
 
 
     const button =
-    document.querySelector(".start-btn");
+    document.querySelector(
+        ".start-btn"
+    );
 
 
     button.textContent =
-    "🎂 Happy Birthday! 🎂";
+    "🎂 Happy Birthday AURORA 🩺";
 
 
     setTimeout(()=>{
@@ -1634,89 +3256,9 @@ function celebrate(){
         button.textContent =
         "🎉 اضغطي هنا للمفاجأة";
 
-    },4000);
+    },4500);
 
 }
-
-
-/* =====================================================
-   COUNTDOWN LOOP
-===================================================== */
-
-updateCountdown();
-
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-/* =====================================================
-   BACKGROUND EFFECTS
-===================================================== */
-
-/*
-   المؤثرات الثقيلة لا تبدأ قبل
-   فتح الموقع.
-*/
-
-let effectsStarted = false;
-
-
-function startBackgroundEffects(){
-
-    if(effectsStarted)
-        return;
-
-
-    effectsStarted = true;
-
-
-    setInterval(
-        createFloating,
-        650
-    );
-
-}
-
-
-/*
-   بدء المؤثرات بعد فتح الموقع
-*/
-
-setTimeout(()=>{
-
-    const observer =
-    new MutationObserver(()=>{
-
-        const lock =
-        document.getElementById(
-            "lockScreen"
-        );
-
-
-        if(lock.classList.contains("hidden")){
-
-            startBackgroundEffects();
-
-            observer.disconnect();
-
-        }
-
-    });
-
-
-    observer.observe(
-        document.getElementById(
-            "lockScreen"
-        ),
-        {
-            attributes:true
-        }
-    );
-
-},100);
 
 
 /* =====================================================
@@ -1724,112 +3266,117 @@ setTimeout(()=>{
 ===================================================== */
 
 document.addEventListener(
-"click",
-(event)=>{
+    "click",
+    event=>{
 
-
-    /*
-       لا نعرض مؤثرات النقر
-       أثناء شاشة الانتظار.
-    */
-
-    const lock =
-    document.getElementById(
-        "lockScreen"
-    );
-
-
-    if(!lock.classList.contains("hidden"))
-        return;
-
-
-    for(let i=0;i<8;i++){
-
-        const sparkle =
-        document.createElement("div");
-
-
-        sparkle.textContent =
-        "✨";
-
-
-        sparkle.style.position =
-        "fixed";
-
-
-        sparkle.style.left =
-        event.clientX + "px";
-
-
-        sparkle.style.top =
-        event.clientY + "px";
-
-
-        sparkle.style.pointerEvents =
-        "none";
-
-
-        sparkle.style.zIndex =
-        "99999";
-
-
-        document.body.appendChild(
-        sparkle
+        const lock =
+        document.getElementById(
+            "lockScreen"
         );
 
 
-        const angle =
-        Math.random()*Math.PI*2;
+        if(
+            !lock.classList.contains(
+                "hidden"
+            )
+        )
+            return;
 
 
-        const distance =
-        30 + Math.random()*70;
+        for(
+            let i=0;
+            i<9;
+            i++
+        ){
+
+            const spark =
+            document.createElement(
+                "div"
+            );
 
 
-        sparkle.animate(
+            spark.className =
+            "click-spark";
 
-        [
 
-            {
+            spark.textContent =
+            Math.random() > .5
+            ? "✨"
+            : "💙";
 
-                transform:
-                "translate(-50%,-50%) scale(.5)",
 
-                opacity:1
+            spark.style.left =
+            event.clientX +
+            "px";
 
-            },
 
-            {
+            spark.style.top =
+            event.clientY +
+            "px";
 
-                transform:
-                `translate(
-                    ${Math.cos(angle)*distance}px,
-                    ${Math.sin(angle)*distance}px
-                ) scale(1.4)`,
 
-                opacity:0
+            document.body.appendChild(
+                spark
+            );
 
-            }
 
-        ],
+            const angle =
+            Math.random() *
+            Math.PI *
+            2;
 
-        {
 
-            duration:700,
+            const distance =
+            30 +
+            Math.random()*80;
 
-            easing:"ease-out"
+
+            spark.animate(
+
+                [
+
+                    {
+
+                        transform:
+                        "translate(-50%,-50%) scale(.5)",
+
+                        opacity:1
+
+                    },
+
+                    {
+
+                        transform:
+                        `translate(
+                            ${Math.cos(angle)*distance}px,
+                            ${Math.sin(angle)*distance}px
+                        ) scale(1.3)`,
+
+                        opacity:0
+
+                    }
+
+                ],
+
+                {
+
+                    duration:750,
+
+                    easing:"ease-out"
+
+                }
+
+            ).onfinish=()=>{
+
+                spark.remove();
+
+            };
 
         }
 
-        ).onfinish = ()=>{
-
-            sparkle.remove();
-
-        };
-
     }
 
-});
+);
 
 </script>
 
