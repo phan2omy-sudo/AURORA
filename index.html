@@ -23,9 +23,11 @@ body{
     min-height:100vh;
 }
 
-/* LOCK SCREEN */
+/* =========================
+   OPENING SCREEN
+========================= */
 
-.lock-screen{
+.opening{
     position:fixed;
     inset:0;
     z-index:9999;
@@ -38,33 +40,33 @@ body{
         radial-gradient(circle at 20% 20%,#fff,transparent 30%),
         radial-gradient(circle at 80% 80%,#e7faff,transparent 30%),
         linear-gradient(135deg,#dff7ff,#bdefff,#c7edff);
-    transition:opacity 1s ease,visibility 1s ease;
+    transition:opacity 1.2s ease,visibility 1.2s ease;
 }
 
-.lock-screen.unlocked{
+.opening.hidden{
     opacity:0;
     visibility:hidden;
     pointer-events:none;
 }
 
-.lock-card{
+.opening-card{
     width:min(550px,95%);
-    padding:40px 25px;
-    border-radius:35px;
-    background:rgba(255,255,255,.62);
-    border:2px solid rgba(255,255,255,.85);
+    padding:45px 25px;
+    border-radius:38px;
+    background:rgba(255,255,255,.65);
+    border:2px solid rgba(255,255,255,.9);
     box-shadow:0 25px 70px rgba(64,160,205,.22);
     backdrop-filter:blur(15px);
-    animation:lockAppear 1.2s ease;
+    animation:openingAppear 1.2s ease;
 }
 
-@keyframes lockAppear{
-    from{opacity:0;transform:translateY(30px) scale(.95)}
+@keyframes openingAppear{
+    from{opacity:0;transform:translateY(30px) scale(.94)}
     to{opacity:1;transform:translateY(0) scale(1)}
 }
 
-.lock-heart{
-    font-size:65px;
+.opening-heart{
+    font-size:70px;
     animation:heartbeat 1.5s infinite;
     margin-bottom:15px;
 }
@@ -74,72 +76,106 @@ body{
     50%{transform:scale(1.15)}
 }
 
-.lock-name{
-    font-size:clamp(35px,9vw,65px);
-    font-weight:900;
-    letter-spacing:5px;
-    color:#55b9e5;
-    text-shadow:0 5px 25px rgba(60,160,210,.2);
+.opening-small{
+    color:#6c9bb3;
+    font-size:14px;
+    letter-spacing:4px;
     margin-bottom:12px;
 }
 
-.lock-subtitle{
+.opening-name{
+    font-size:clamp(45px,11vw,75px);
+    font-weight:900;
+    letter-spacing:6px;
+    background:linear-gradient(90deg,#4bb4e5,#fff,#62c5ec,#fff,#4bb4e5);
+    background-size:300% auto;
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    animation:shine 4s linear infinite;
+}
+
+.opening-text{
     color:#638ba1;
     font-size:17px;
-    line-height:1.8;
-    margin-bottom:25px;
+    line-height:1.9;
+    margin:15px 0 30px;
 }
 
-.countdown{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    direction:ltr;
-    margin:25px 0;
-}
-
-.time-box{
-    padding:15px 5px;
-    border-radius:18px;
-    background:rgba(255,255,255,.85);
-    box-shadow:0 8px 20px rgba(65,160,200,.12);
-}
-
-.time-number{
-    display:block;
-    color:#379dce;
-    font-size:clamp(25px,7vw,38px);
+.open-button{
+    position:relative;
+    overflow:hidden;
+    border:2px solid rgba(255,255,255,.9);
+    padding:18px 30px;
+    min-width:min(300px,100%);
+    border-radius:60px;
+    color:white;
+    font-size:17px;
     font-weight:bold;
-    font-variant-numeric:tabular-nums;
+    letter-spacing:1px;
+    cursor:pointer;
+    background:linear-gradient(120deg,#49b4e5,#83dcfa,#4caee0);
+    background-size:200% auto;
+    box-shadow:
+        0 12px 35px rgba(54,159,205,.3),
+        inset 0 2px 5px rgba(255,255,255,.5);
+    animation:buttonGlow 2.5s infinite alternate;
+    transition:.3s;
 }
 
-.time-label{
-    display:block;
-    font-size:12px;
-    color:#7296a9;
-    margin-top:7px;
+.open-button:hover{
+    transform:translateY(-5px) scale(1.04);
 }
 
-.lock-note{
-    color:#7da4b7;
-    font-size:14px;
-    line-height:1.8;
+.open-button:active{
+    transform:scale(.96);
 }
 
-.lock-decoration{
+.open-button:before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-100%;
+    width:60%;
+    height:200%;
+    transform:rotate(25deg);
+    background:rgba(255,255,255,.35);
+    animation:buttonShine 3s infinite;
+}
+
+@keyframes buttonShine{
+    to{left:150%}
+}
+
+@keyframes buttonGlow{
+    from{box-shadow:0 8px 25px rgba(54,159,205,.2)}
+    to{box-shadow:0 15px 45px rgba(54,159,205,.5)}
+}
+
+.opening-note{
+    margin-top:22px;
+    font-size:13px;
+    color:#83a9bb;
+}
+
+/* OPENING FLOATING DECORATIONS */
+
+.open-decoration{
     position:absolute;
     pointer-events:none;
-    animation:floatLock 7s linear infinite;
-    opacity:.7;
+    animation:openingFloat 7s linear infinite;
+    opacity:.8;
 }
 
-@keyframes floatLock{
+@keyframes openingFloat{
     from{transform:translateY(110vh) rotate(0);opacity:0}
     15%{opacity:.8}
     to{transform:translateY(-20vh) rotate(360deg);opacity:0}
 }
 
-/* BACKGROUND */
+/* =========================
+   BACKGROUND
+========================= */
 
 .background{
     position:fixed;
@@ -185,7 +221,9 @@ body{
     to{transform:translateX(calc(100vw + 500px))}
 }
 
-/* MAIN HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     position:relative;
@@ -510,7 +548,7 @@ footer{
     }
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 
 @media(max-width:600px){
     .hero-box{padding:40px 18px;border-radius:30px}
@@ -520,9 +558,7 @@ footer{
     .section-title{font-size:29px}
     .doctor h2{font-size:28px}
     .doctor p{font-size:17px}
-    .lock-card{padding:35px 15px}
-    .countdown{gap:6px}
-    .time-box{padding:12px 3px}
+    .opening-card{padding:35px 15px}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -537,53 +573,39 @@ footer{
 
 <body>
 
-<!-- LOCK SCREEN -->
-<div class="lock-screen" id="lockScreen">
+<!-- OPENING SCREEN -->
+<div class="opening" id="opening">
 
-    <div class="lock-card">
+    <div class="opening-card">
 
-        <div class="lock-heart">💙</div>
+        <div class="opening-heart">💙</div>
 
-        <div class="lock-name">AURORA</div>
-
-        <div class="lock-subtitle">
-            هناك مفاجأة صغيرة تنتظركِ...
-            <br>
-            لكن لكل شيء وقته الجميل ✨
+        <div class="opening-small">
+            A SPECIAL SURPRISE FOR
         </div>
 
-        <div class="countdown">
-
-            <div class="time-box">
-                <span class="time-number" id="days">00</span>
-                <span class="time-label">DAYS</span>
-            </div>
-
-            <div class="time-box">
-                <span class="time-number" id="hours">00</span>
-                <span class="time-label">HOURS</span>
-            </div>
-
-            <div class="time-box">
-                <span class="time-number" id="minutes">00</span>
-                <span class="time-label">MINUTES</span>
-            </div>
-
-            <div class="time-box">
-                <span class="time-number" id="seconds">00</span>
-                <span class="time-label">SECONDS</span>
-            </div>
-
+        <div class="opening-name">
+            AURORA
         </div>
 
-        <div class="lock-note" id="lockNote">
-            🔒 ستُفتح المفاجأة يوم 2 نوفمبر عند منتصف الليل
+        <div class="opening-text">
+            هناك شيء جميل ينتظركِ...
             <br>
-            Until the special moment 💫
+            صُنِع بكل الود خصيصًا لكِ ✨
+        </div>
+
+        <button class="open-button" id="openButton" onclick="openWebsite()">
+            ✨ OPEN YOUR SURPRISE ✨
+        </button>
+
+        <div class="opening-note">
+            A little surprise, just for you 💙
         </div>
 
     </div>
+
 </div>
+
 
 <!-- BACKGROUND -->
 <div class="background">
@@ -591,6 +613,7 @@ footer{
     <div class="cloud"></div>
     <div class="cloud"></div>
 </div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -617,6 +640,7 @@ footer{
 
     </div>
 </section>
+
 
 <!-- MESSAGE -->
 <section class="section">
@@ -689,6 +713,7 @@ footer{
     </div>
 </section>
 
+
 <!-- FUTURE DOCTOR -->
 <section class="section">
     <div class="doctor">
@@ -713,137 +738,94 @@ footer{
     </div>
 </section>
 
+
 <footer>
     Made with 💙 specially for AURORA
     <br><br>
     ✨ 2 NOVEMBER ✨
 </footer>
 
+
 <script>
 
-/* =================================
-   COUNTDOWN SETTINGS
-   2 NOVEMBER 2026 - 12:00 AM
-   Uses visitor's local device time
-================================= */
+/* =========================
+   OPENING SCREEN DECORATIONS
+========================= */
 
-const birthdayDate = new Date("2026-11-02T00:00:00").getTime();
+const openingSymbols=["💙","🩵","✨","🦋","⭐","🌸"];
 
-const lockScreen = document.getElementById("lockScreen");
+function createOpeningDecoration(){
 
-let websiteOpened = false;
+    const opening=document.getElementById("opening");
 
-function openWebsite(){
-
-    if(websiteOpened) return;
-
-    websiteOpened = true;
-
-    lockScreen.classList.add("unlocked");
-
-    setTimeout(()=>{
-        lockScreen.style.display="none";
-    },1100);
-
-    // Celebration after unlocking
-    setTimeout(()=>createConfetti(150),500);
-
-    setTimeout(()=>createConfetti(100),1800);
-
-    for(let i=0;i<35;i++){
-        setTimeout(createFloating,i*100);
-    }
-
-    document.body.style.overflowX="hidden";
-}
-
-function updateCountdown(){
-
-    const now = new Date().getTime();
-
-    const difference = birthdayDate - now;
-
-    if(difference <= 0){
-
-        clearInterval(countdownInterval);
-
-        document.getElementById("days").textContent="00";
-        document.getElementById("hours").textContent="00";
-        document.getElementById("minutes").textContent="00";
-        document.getElementById("seconds").textContent="00";
-
-        openWebsite();
-
-        return;
-    }
-
-    const days = Math.floor(
-        difference/(1000*60*60*24)
-    );
-
-    const hours = Math.floor(
-        (difference%(1000*60*60*24))/(1000*60*60)
-    );
-
-    const minutes = Math.floor(
-        (difference%(1000*60*60))/(1000*60)
-    );
-
-    const seconds = Math.floor(
-        (difference%(1000*60))/1000
-    );
-
-    document.getElementById("days").textContent=
-        String(days).padStart(2,"0");
-
-    document.getElementById("hours").textContent=
-        String(hours).padStart(2,"0");
-
-    document.getElementById("minutes").textContent=
-        String(minutes).padStart(2,"0");
-
-    document.getElementById("seconds").textContent=
-        String(seconds).padStart(2,"0");
-}
-
-updateCountdown();
-
-const countdownInterval=setInterval(updateCountdown,1000);
-
-
-/* =================================
-   LOCK SCREEN FLOATING DECORATIONS
-================================= */
-
-const lockSymbols=["💙","🩵","✨","🦋","⭐"];
-
-function createLockDecoration(){
-
-    if(websiteOpened) return;
+    if(opening.classList.contains("hidden")) return;
 
     const item=document.createElement("div");
 
-    item.className="lock-decoration";
+    item.className="open-decoration";
 
     item.textContent=
-        lockSymbols[Math.floor(Math.random()*lockSymbols.length)];
+        openingSymbols[Math.floor(Math.random()*openingSymbols.length)];
 
     item.style.left=Math.random()*100+"vw";
     item.style.top="100vh";
     item.style.fontSize=(15+Math.random()*25)+"px";
     item.style.animationDuration=(5+Math.random()*5)+"s";
 
-    lockScreen.appendChild(item);
+    opening.appendChild(item);
 
     setTimeout(()=>item.remove(),11000);
 }
 
-setInterval(createLockDecoration,900);
+setInterval(createOpeningDecoration,700);
 
 
-/* =================================
+/* =========================
+   OPEN WEBSITE
+========================= */
+
+let websiteOpened=false;
+
+function openWebsite(){
+
+    if(websiteOpened) return;
+
+    websiteOpened=true;
+
+    const button=document.getElementById("openButton");
+
+    button.disabled=true;
+    button.innerHTML="💙 OPENING YOUR SURPRISE...";
+
+    // Celebration before revealing
+    createConfetti(100);
+
+    for(let i=0;i<35;i++){
+        setTimeout(createFloating,i*70);
+    }
+
+    // Hide opening screen
+    setTimeout(()=>{
+
+        document.getElementById("opening").classList.add("hidden");
+
+        // More celebration
+        createConfetti(150);
+
+        setTimeout(()=>createConfetti(100),1200);
+
+        for(let i=0;i<40;i++){
+            setTimeout(createFloating,i*100);
+        }
+
+    },900);
+
+}
+
+
+/* =========================
    FLOATING EFFECTS
-================================= */
+========================= */
 
 const effects=[
     "💙","🩵","🤍","💫","✨","⭐",
@@ -870,9 +852,9 @@ function createFloating(){
 }
 
 
-/* =================================
+/* =========================
    CONFETTI
-================================= */
+========================= */
 
 function createConfetti(amount=70){
 
@@ -899,9 +881,9 @@ function createConfetti(amount=70){
 }
 
 
-/* =================================
+/* =========================
    SURPRISE BUTTON
-================================= */
+========================= */
 
 function surprise(){
 
@@ -921,9 +903,9 @@ function surprise(){
 }
 
 
-/* =================================
+/* =========================
    CLICK SPARKLES
-================================= */
+========================= */
 
 document.addEventListener("click",function(e){
 
@@ -953,9 +935,9 @@ document.addEventListener("click",function(e){
 });
 
 
-/* =================================
-   START EFFECTS AFTER UNLOCK
-================================= */
+/* =========================
+   CONTINUOUS EFFECTS
+========================= */
 
 setInterval(()=>{
 
